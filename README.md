@@ -2,7 +2,7 @@
 
 I want to create my own mini research for the first mini project. I want to investigates the factors associated with national happiness, utilizing happiness scores from the World Population Review and key factors from Wikipedia tables. Two variables I will explore include GDP per capita and life expectancy, offering insights into the economic, environmental, educational, and health-related factors that influence happiness levels across countries.
 
-##Learning objectives
+## Learning objectives
 
 I will include 17 learning objectives and four unassessed objectives which will ideally give me 21 points for this project. Below is the list of objectives I am using for this mini project.  
 

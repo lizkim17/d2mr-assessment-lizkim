@@ -4,7 +4,7 @@ I want to create my own mini research for the first mini project. I want to inve
 
 ## Learning objectives
 
-I will include 17 learning objectives and four unassessed objectives which will ideally give me 21 points for this project. Below is the list of objectives I am using for this mini project.  
+I will include 17 learning objectives, four unassessed objectives, and two off the menu objective, which will ideally give me 23 points for this project. Below is the list of objectives I am using for this mini project.  
 
 Github and RStudio:
 
@@ -43,6 +43,10 @@ Unassessed Learning Objectives:
 14. define “tidy” data and explain its advantages and disadvantages
 15. recognize and interpret common data visualizations
 16. determine most appropriate visualizations and analyses for specific research questions and data
+
+Off the Menu:
+1. scrape data from external sources
+2. create a table of contents with links to each heading
   
 ## Why this Project? 
 

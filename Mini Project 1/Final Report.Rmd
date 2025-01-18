@@ -1,0 +1,49 @@
+---
+title: "Final Report"
+author: "Liz"
+date: "1/21/2025"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(rvest)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(knitr) 
+```
+
+## Table of Contents
+
+-   [1. Introduction](#introduction)
+-   [2. Research Question](#research-question)
+-   [3. Tidying Data and Data Description](#tidying-data-and-data-description)
+-   [4. Descriptive Statistics and Plots](#descriptive-statistics-and-plots)
+-   [5. Data Interpretation](#data-interpretation)
+
+# 1. Introduction {#introduction}
+
+This project investigates the factors associated with national happiness, utilizing happiness scores from the World Population Review and key factors from Wikipedia tables. Key variables include GDP per capita, environmental quality, abd literacy rates offering insights into the economic, environmental, and educationalfactors that influence happiness levels across countries.
+
+The reason why I'm working on this project is because it is important to understand how these factors contribute to national happiness. Happiness is a critical measure of well-being, and identifying its determinants is vital for improving quality of life and addressing global disparities. By leveraging diverse datasets, this research aims to contribute actionable insights to guide policymakers and organizations in fostering equitable and sustainable well-being worldwide.
+
+# 2. Research Question {#research-question}
+
+How do economic and environmental variables influence national happiness levels as reported by the World Population Review?
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

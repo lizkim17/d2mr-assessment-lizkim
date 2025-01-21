@@ -1,6 +1,6 @@
 ---
 title: "Final Report"
-author: "Liz"
+author: "Liz Kim"
 date: "1/21/2025"
 output: word_document
 ---

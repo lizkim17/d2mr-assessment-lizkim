@@ -26,9 +26,9 @@ library(knitr)
 
 # 1. Introduction {#introduction}
 
-This project investigates the factors associated with national happiness, utilizing happiness scores from the World Population Review and key factors from Wikipedia tables. Key variables include GDP per capita, environmental quality, abd literacy rates offering insights into the economic, environmental, and educationalfactors that influence happiness levels across countries.
+This project investigates the factors associated with national happiness, utilizing happiness scores from the World Population Review and key factors from Wikipedia tables. Key variables include GDP per capita, environmental quality, abd literacy rates offering insights into the economic, environmental, and educational factors that influence happiness levels across countries.
 
-The reason why I'm working on this project is because it is important to understand how these factors contribute to national happiness. Happiness is a critical measure of well-being, and identifying its determinants is vital for improving quality of life and addressing global disparities. By leveraging diverse datasets, this research aims to contribute actionable insights to guide policymakers and organizations in fostering equitable and sustainable well-being worldwide.
+The reason why I'm working on this project is because it is important to understand how these factors contribute to national happiness. Happiness is a critical measure of well-being, and identifying its determinants is vital.
 
 # 2. Research Question {#research-question}
 

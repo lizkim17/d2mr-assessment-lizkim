@@ -20,7 +20,7 @@ library(knitr)
 
 -   [1. Introduction](#introduction)
 -   [2. Research Question](#research-question)
--   [3. Tidying Data and Data Description](#tidying-data-and-data-description)
+-   [3. Data Scraping & Tidying the Data](#Data-Scaping-and-Tidying-the-Data)
 -   [4. Descriptive Statistics and Plots](#descriptive-statistics-and-plots)
 -   [5. Data Interpretation](#data-interpretation)
 
@@ -32,18 +32,421 @@ The reason why I'm working on this project is because it is important to underst
 
 # 2. Research Question {#research-question}
 
-How do economic and environmental variables influence national happiness levels as reported by the World Population Review?
+How do economic,education, and environmental variables influence national happiness levels as reported by the World Population Review?
 
-```{r cars}
-summary(cars)
+# 3. Data Scraping & Tidying the Data
+
+The codes for data scraping are provided in a separate file: DataScraping.rmd. In this section, I included the code to tidy the tables and provided brief data descriptions. The datasets comprises five tables, each offering insights into countries' happiness scores, GDP, literacy rates, environmental performance, and life expectancy.
+
+**Happiness Score**
+
+```{r}
+# Read the CSV file
+happiest_countries <- read_csv("happiest-countries-in-the-world-2024.csv")
+
+# Preview the data
+head(happiest_countries)
 ```
 
-## Including Plots
+I requested this data table from WorldPopulationReview.com. I received an excel file through my email.
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+**GDP per Capita**
+
+```{r}
+# Save the URL and scrape the webpage
+url <- "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita"
+gdp_page <- read_html(x = url)
+
+# Extract all tables with the class "wikitable"
+tables <- html_elements(gdp_page, css = "table.wikitable")
+
+# Convert the first table to a data frame
+gdp_per_capita_table <- html_table(tables[[1]], fill = TRUE)
+
+# Save the table as a CSV file
+write_csv(gdp_per_capita_table, "gdp_per_capita.csv")
+
+# Preview the table
+head(gdp_per_capita_table)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**Education (Literacy Rate)**
+
+```{r}
+# Save the URL and scrape the webpage
+url <- "https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate"
+literacy_page <- read_html(x = url)
+
+# Extract all tables with the class "wikitable"
+tables <- html_elements(literacy_page, css = "table.wikitable")
+
+# Convert all table nodes into a list of data frames
+all_tables <- html_table(tables, fill = TRUE)
+
+# Inspect tables to find the one I want to extract
+for (i in seq_along(all_tables)) {
+  print(paste("Table", i))
+  print(head(all_tables[[i]]))
+}
+
+# Extract the second table 
+literacy_rate_table <- all_tables[[2]]
+write_csv(literacy_rate_table, "literacy_rate.csv")
+
+# Preview the table
+head(literacy_rate_table)
+```
+
+**Environmental Quality**
+
+```{r}
+# Save the URL and scrape the webpage
+url <- "https://en.wikipedia.org/wiki/Environmental_Performance_Index"
+environment_page <- read_html(x = url)
+
+# Extract all tables with the class "wikitable"
+tables <- html_elements(environment_page, css = "table.wikitable")
+
+# Convert all table nodes into a list of data frames
+all_tables <- html_table(tables, fill = TRUE)
+
+# Inspect tables to find the one I want to extract
+for (i in seq_along(all_tables)) {
+  print(paste("Table", i))
+  print(head(all_tables[[i]]))
+}
+
+# Extract the second table (Environmental Performance Index)
+environmental_quality_table <- all_tables[[2]]
+write_csv(environmental_quality_table, "environmental_quality.csv")
+
+# Preview the table
+head(environmental_quality_table)
+```
+
+Here, I included the code to tidy the tables and provided brief data descriptions. The datasets comprises four tables, each offering insights into countries' happiness scores, GDP, literacy rates, and environmental performance.
+
+## Happiness Score Table
+
+```{r}
+# Read the previously saved CSV file
+happiest_countries <- read_csv("happiest-countries-in-the-world-2024.csv")
+
+# Clean and rename the happiest_countries dataset
+happiest_countries_cleaned <- happiest_countries %>%
+  select(country, HappiestCountriesWorldHappinessReportScore2024) %>% 
+  filter(!is.na(HappiestCountriesWorldHappinessReportScore2024)) %>% 
+  rename(HappinessScore = HappiestCountriesWorldHappinessReportScore2024) 
+
+# Preview and save the cleaned table
+head(happiest_countries_cleaned)
+write_csv(happiest_countries_cleaned, "happiest_countries_cleaned.csv")
+```
+
+
+## GDP Table
+
+```{r}
+# Read the previously saved CSV file
+gdp_per_capita_table <- read_csv("gdp_per_capita.csv")
+
+# Rename columns
+colnames(gdp_per_capita_table) <- c("country", "IMF_estimate", "IMF_year", 
+                                    "World_Bank_estimate", "World_Bank_year", 
+                                    "UN_estimate", "UN_year")
+
+# Tidy the table
+fill_missing_values <- function(data) {
+  data %>%
+    select(country, IMF_estimate) %>%              
+    mutate(
+      IMF_estimate = ifelse(IMF_estimate == "-", NA, IMF_estimate), 
+      IMF_estimate = gsub(",", "", IMF_estimate),      
+      IMF_estimate = as.numeric(IMF_estimate)         
+    ) %>%
+    fill(IMF_estimate, .direction = "down") %>%       
+    filter(!is.na(IMF_estimate)) %>%                  
+    rename(estimate = IMF_estimate)                  
+}
+
+# Apply the cleaning function
+gdp_per_capita_table_cleaned <- fill_missing_values(gdp_per_capita_table)
+
+# Preview and save the cleaned table
+head(gdp_per_capita_table_cleaned) 
+write_csv(gdp_per_capita_table_cleaned, "gdp_per_capita_table_cleaned.csv")
+```
+
+
+## Education (Literacy Rate Table)
+
+```{r}
+# Read the previously saved CSV file
+literacy_rate_table <- read_csv("literacy_rate.csv")
+head(literacy_rate_table)
+
+# Rename columns
+colnames(literacy_rate_table) <- c("country", "total", "male", "female", "gap", "year")
+
+# Tidy the data
+literacy_rate_table_cleaned <- literacy_rate_table %>%
+  select(country, total, year) %>%
+  mutate(
+    country = gsub("\\*", "", country),  
+    total = as.numeric(gsub("%", "", total)), 
+    year = as.numeric(year)                 
+  )
+
+# Filter out rows where country == "Country" or "World"
+literacy_rate_table_cleaned <- literacy_rate_table_cleaned %>%
+  filter(country != "Country",              
+         country != "World")    
+
+# Preview and save the cleaned table
+head(literacy_rate_table_cleaned)
+write_csv(literacy_rate_table_cleaned, "literacy_rate_table_cleaned.csv")
+```
+
+
+## Environmental Quality Table
+
+```{r}
+# Read the previously saved CSV file
+environmental_quality_table <- read_csv("environmental_quality.csv")
+
+# Tidy the data
+environmental_quality_table_cleaned <- environmental_quality_table %>%
+  select(country = `Country`, value = `Value`)
+
+# Preview and save the cleaned table
+head(environmental_quality_table_cleaned)
+write_csv(environmental_quality_table_cleaned, "environmental_quality_table_cleaned.csv")
+```
+
+# 4. Descriptive Statistics and Plots {#descriptive-statistics-and-plots}
+
+```{r}
+# Clean country names function
+clean_country_names <- function(data, country_column = "country") {
+  data %>%
+    mutate(!!sym(country_column) := gsub("[^[:alnum:] ]", "", !!sym(country_column))) %>%
+    mutate(!!sym(country_column) := trimws(!!sym(country_column))) %>%
+    mutate(!!sym(country_column) := tolower(!!sym(country_column)))
+}
+
+# Clean the country names in all datasets
+happiest_countries_cleaned <- clean_country_names(happiest_countries_cleaned)
+gdp_per_capita_table_cleaned <- clean_country_names(gdp_per_capita_table_cleaned)
+literacy_rate_table_cleaned <- clean_country_names(literacy_rate_table_cleaned)
+environmental_quality_table_cleaned <- clean_country_names(environmental_quality_table_cleaned)
+
+# Rename columns to prepare for merging
+gdp_data <- gdp_per_capita_table_cleaned %>%
+  rename(Value = estimate) %>%
+  mutate(Variable = "GDP")
+
+education_data <- literacy_rate_table_cleaned %>%
+  rename(Value = total) %>%
+  mutate(Variable = "Education")
+
+env_quality_data <- environmental_quality_table_cleaned %>%
+  rename(Value = value) %>%
+  mutate(Variable = "EnvironmentalQuality")
+
+happiness_data <- happiest_countries_cleaned %>%
+  rename(Value = HappinessScore) %>%
+  mutate(Variable = "HappinessScore")
+
+# Combine all datasets into a single long format
+long_data <- bind_rows(
+  gdp_data,
+  education_data,
+  env_quality_data,
+  happiness_data
+)
+
+# Pivot to wide format
+wide_data <- long_data %>%
+  pivot_wider(
+    names_from = Variable,
+    values_from = Value
+  )
+
+# Remove year and sexgap columns
+wide_data_cleaned <- wide_data %>%
+  select(-year) 
+
+# Display the Merged Data Overview
+wide_data_cleaned %>%
+  head(10) %>% 
+  kable(
+    col.names = c("Country", "GDP", "Education", "Environmental Quality", "Happiness Score"),
+    caption = "Merged Data Overview",
+    format = "markdown"
+  )
+```
+
+I created the Merged Data Overview table to provide a comprehensive view of all the important variables in a single table. However, due to differences in country names and variations in the countries included in each dataset, many NA values are present. Therefore, for the visualizations, I will analyze two variables at a time separately. Despite the NA values, this table is still useful for quickly skimming through the data.
+
+## RQ1: How does GDP per capita associate with a country's happiness score?
+
+```{r}
+# Clean the country names in gdp_per_capita_table_cleaned
+gdp_per_capita_table_cleaned <- gdp_per_capita_table_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>%  
+  mutate(country = trimws(country)) %>%                   
+  mutate(country = tolower(country))                      
+
+# Clean the country names in happiest_countries_cleaned
+happiest_countries_cleaned <- happiest_countries_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>%  
+  mutate(country = trimws(country)) %>%                    
+  mutate(country = tolower(country))                     
+
+# Merge GDP and HappinessScore data
+merged_data <- gdp_per_capita_table_cleaned %>%
+  left_join(happiest_countries_cleaned, by = "country")
+print(merged_data)
+
+# Remove missing values
+cleaned_merged_data <- merged_data %>%
+  filter(!is.na(estimate), !is.na(HappinessScore))
+print(cleaned_merged_data)
+
+# View summary statistics 
+summary(cleaned_merged_data[, c("estimate", "HappinessScore")])
+
+# Create the scatter plot
+ggplot(data = cleaned_merged_data, aes(x = estimate, y = HappinessScore)) +
+    geom_point(color = "blue", size = 2) +                
+    geom_smooth(method = "lm", color = "red", se = TRUE) + 
+    scale_x_continuous(labels = scales::comma) +          
+    labs(
+        x = "GDP Per Capita (USD)",
+        y = "Happiness Score",
+        title = "GDP Per Capita and Happiness Score"
+    ) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12) 
+  )
+```
+
+## RQ2: How does environmental quality associate with a country's happiness score?
+
+```{r}
+# Clean the country names in environmental_quality_table_cleaned
+environmental_quality_table_cleaned <- environmental_quality_table_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>%  
+  mutate(country = trimws(country)) %>%                  
+  mutate(country = tolower(country))                     
+
+# Clean the country names in happiest_countries_cleaned
+happiest_countries_cleaned <- happiest_countries_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>%  
+  mutate(country = trimws(country)) %>%                    
+  mutate(country = tolower(country))                     
+
+# Merge environmental quality data with happiness data
+merged_data_env <- environmental_quality_table_cleaned %>%
+  left_join(happiest_countries_cleaned, by = "country")
+print(merged_data_env)
+
+# Remove rows with missing values in value or HappinessScore
+cleaned_merged_data_env <- merged_data_env %>%
+  filter(!is.na(value), !is.na(HappinessScore))
+print(cleaned_merged_data_env)
+
+# View summary statistics 
+summary(cleaned_merged_data_env[, c("value")])
+
+# Create the line graph
+ggplot(cleaned_merged_data_env, aes(x = value, y = HappinessScore)) +
+  geom_line(color = "blue", size = 1) +  
+  geom_point(color = "red", size = 2) + 
+  labs(
+    title = "Environmental Index and Happiness Score",
+    x = "Environmental Index",
+    y = "Happiness Score"
+  ) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12) 
+  )
+
+# Create the scatter plot
+ggplot(cleaned_merged_data_env, aes(x = value, y = HappinessScore)) +
+  geom_point(color = "blue", size = 2) +               
+  geom_smooth(method = "lm", color = "red", se = TRUE) + 
+  labs(
+    title = "Environmental Index and Happiness Score",
+    x = "Environmental Index",
+    y = "Happiness Score"
+  ) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12) 
+  )
+```
+
+I created two graphs to explore and to find out the best graph. The line graph still helps demonstrate a general positive trend between environmental quality and happiness scores; however, I think the scatter plot graph is better.
+
+## RQ3: How does a country's literacy rate associate with its happiness score?
+
+```{r}
+# Clean the country names in literacy_rate_table_cleaned
+literacy_rate_table_cleaned <- literacy_rate_table_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>% 
+  mutate(country = trimws(country)) %>%                    
+  mutate(country = tolower(country))                    
+
+# Clean the country names in happiest_countries_cleaned
+happiest_countries_cleaned <- happiest_countries_cleaned %>%
+  mutate(country = gsub("[^[:alnum:] ]", "", country)) %>% 
+  mutate(country = trimws(country)) %>%                   
+  mutate(country = tolower(country))                    
+
+# Merge Literacy Rate and HappinessScore data
+merged_data_lit <- literacy_rate_table_cleaned %>%
+  left_join(happiest_countries_cleaned, by = "country")
+print(merged_data_lit)
+
+# Remove missing values
+cleaned_merged_data_lit <- merged_data_lit %>%
+  filter(!is.na(total), !is.na(year), !is.na(HappinessScore))
+print(cleaned_merged_data_lit)
+
+# View summary statistics 
+summary(cleaned_merged_data_lit[, c("total")])
+
+# Calculate percentiles for the "total" column in the literacy rate table
+percentiles <- quantile(literacy_rate_table_cleaned$total, probs = c(0.25, 0.5, 0.75, 1), na.rm = TRUE)
+print(percentiles)
+
+# Add bins to the data using the specified quartiles
+cleaned_merged_data_lit <- cleaned_merged_data_lit %>%
+  mutate(
+    literacy_bin = cut(
+      total,
+      breaks = c(0, 80.725, 95.650, 99.000, 100), 
+      labels = c("Q1: <80.725", 
+                 "Q2: 80.725-95.650", 
+                 "Q3: 95.650-99.000", 
+                 "Q4: >99.000"),
+      include.lowest = TRUE
+    )
+  )
+# Create the box plot
+ggplot(cleaned_merged_data_lit, aes(x = literacy_bin, y = HappinessScore)) +
+  geom_boxplot(fill = "lightblue", color = "black", outlier.color = "red", outlier.size = 2) +
+  labs(
+    title = "Literacy Rate and Happiness Score",
+    x = "Literacy Rate (Quartiles)",
+    y = "Happiness Score"
+  ) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12) 
+  )
+```

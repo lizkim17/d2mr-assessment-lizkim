@@ -17,11 +17,11 @@ CNetID:lizkim
 
 Section:1
 
-Mini-project title: 
+Mini-project title: How do economic,education, and environmental variables influence national happiness levels as reported by the World Population Review?
 
-Submission date:
+Submission date:1/22
 
-Project GitHub subdirectory URL:
+Project GitHub subdirectory URL: https://github.com/lizkim17/d2mr-assessment-lizkim/tree/main/Mini%20Project%201 
 
 URL or instructions to access additional materials, if needed:
 
@@ -29,18 +29,25 @@ URL or instructions to access additional materials, if needed:
 ## Additional information
 
 1. Did you complete the project with direct collaborators or general support? If so, who did you collaborate with and what was/were their contribution(s)?
-    1. Direct collaborators (students who will be turning in a version of the same project) and their contributions:
-    2. General support (students who helped you with debugging, conceptual understanding, or the like) and their contributions:
+No.
+
 2. Did you use LLMs or other AI models to generate text or code for this project? If so, which tools did you use and how did you use them? Remember in this class you *are* allowed (even encouraged) to use these tools for help with coding, but not for writing text. This can be very brief, just one or two sentences is fine unless you have more you'd like to add.
-    1. # Clean country names function
-clean_country_names <- function(data, country_column = "country") {
-  data %>%
-    mutate(!!sym(country_column) := gsub("[^[:alnum:] ]", "", !!sym(country_column))) %>%
-    mutate(!!sym(country_column) := trimws(!!sym(country_column))) %>%
-    mutate(!!sym(country_column) := tolower(!!sym(country_column)))
-}
+
+I used external resource, ChatGPT, to find a way to deal with inconsistencies in country names (e.g., differences in case, punctuation, or blank spaces). I used the following approach adapted from ChatGPT to clean country names before merging datasets; one example is this:
+
+happiest_countries_cleaned \<- happiest_countries_cleaned %\>% mutate( country = gsub("[\^[:alnum:] ]", "", country), country = trimws(country),\
+country = tolower(country)\
+)
+
+I also used the sym() and !! functions, which I learned about from ChatGPT, to make my code more flexible and reusable. These functions, part of tidy evaluation in the dplyr package, enable dynamic programming within tidyverse functions. The sym() function converts a string (e.g., "country") into a symbol for use in functions like mutate(), while !! unquotes the symbol for evaluation. Together, they enable dynamic column selection, making it easier to apply the same cleaning logic across multiple datasets.
+
+I created a reusable cleaning function for country names using sym() and !!: 
+
+clean_country_names \<- function(data, country_column = "country") { data %\>% mutate(!!sym(country_column) := gsub("[\^[:alnum:] ]", "", !!sym(country_column))) %\>% mutate(!!sym(country_column) := trimws(!!sym(country_column))) %\>% mutate(!!sym(country_column) := tolower(!!sym(country_column))) }
+
+
 3. For off-the-menu projects only, did you complete the project as proposed? If not, what changed?
-    1. Yes
+I got rid of life expectancy variable. Instead, I added environment index and literacy rates variables. 
 
 ## Assessed Objectives
 
@@ -79,7 +86,7 @@ Below each learning objective is a list of general expectations for meeting that
     2.  .gitingore comprehensively excludes unnecessary, private, and very large files and is be commeted appropriately
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -89,7 +96,7 @@ Below each learning objective is a list of general expectations for meeting that
     2.  Relies on document revisions rather than manually created new versions
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -101,7 +108,7 @@ Below each learning objective is a list of general expectations for meeting that
     2. Uses more than one function to install/load/require packages
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -122,7 +129,7 @@ Below each learning objective is a list of general expectations for meeting that
     3. Functions are well-documented with comments
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -132,7 +139,7 @@ Below each learning objective is a list of general expectations for meeting that
     2. Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`)
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -144,7 +151,7 @@ Below each learning objective is a list of general expectations for meeting that
     2. Writes out intermediate and/or final datasets in code chunks or sourced scripts
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -155,7 +162,7 @@ Below each learning objective is a list of general expectations for meeting that
     3. Combines `dplyr` and `tidyr` functions in a data transformation pipeline
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -187,7 +194,7 @@ Below each learning objective is a list of general expectations for meeting that
     2. At least one plot is multi-variable
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -196,7 +203,7 @@ Below each learning objective is a list of general expectations for meeting that
     1. Uses at least 2 unique data-mapped `aes()` arguments (e.g., color, shape, size) to group data in a plot in one or multiple plots
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -218,7 +225,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. Uses at least 1 static aesthetic (e.g., color, shape, size) that improves visual clarity without mapping to data
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -231,7 +238,7 @@ Below each learning objective is a list of general expectations for meeting that
     3. Presents results in narrative text, table, or plot
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -254,7 +261,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. Uses dynamic inline R code to render data-dependent text
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -294,7 +301,7 @@ Below each learning objective is a list of general expectations for meeting that
     4.  Chunks are distributed throughout the manuscript, sensibly placed near the text they support
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments: 
         
@@ -319,7 +326,7 @@ Below each learning objective is a list of general expectations for meeting that
     5. References render without error and link to the correct table/figure in pdf/html output
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -332,7 +339,7 @@ Below each learning objective is a list of general expectations for meeting that
     5. Chunks are organized sensibly and appear near the text they support
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -355,7 +362,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. Includes at least 1 footnote
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -387,7 +394,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. No additional steps are needed (e.g., finding data, determining necessary packages to install and load, running unsourced scripts)
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [v] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -432,6 +439,16 @@ If you believe you have demonstrated any of the above skills sufficiently to cou
 
 <!-- Explanation of demonstrated unassessed objectives below this line -->
 
+1.  use frequent, informative comments in code and markdown
+2.  find and understand documentation for R packages and functions
+3.  follow a debugging workflow with independent and collaborative strategies
+6.  customize RStudio
+8.  parse and write complex `for` and `while` loops
+9.  create and use intermediate datasets
+10. determine when code is better suited for a sourced script vs. a notebook chunk and source scripts appropriately
+14. define “tidy” data and explain its advantages and disadvantages
+15. recognize and interpret common data visualizations
+16. determine most appropriate visualizations and analyses for specific research questions and data
 
 <!-- Explanation of demonstrated unassessed objectives above this line -->
 
@@ -457,14 +474,9 @@ Thoughtful reflections may earn engagement points.
 
 <!-- Reflection below this line -->
 
-This was a great opportunity for me to review some of the skills that I learned in the past. 
-I believe that I accomplished various obejctives as well as showed additional and creative skills to explore and organize the data that I am using. I tried to really engage in and put efforts into this project by providing a thoughtful interpretation too.
+Overall, I am proud of what I produced. It was undoubtedly challenging in many ways, but the process pushed me to grow and apply various skills we learned in class and also review some concepts that I already knew. Finding and scraping data from different sources, followed by tidying and merging the data, was particularly demanding. Since I worked with many tables and variable names while managing several CSV files, staying organized was a significant challenge. However, this experience also helped me build better strategies for handling complex datasets. Creating different types of graphs was another hurdle, but it allowed me to creatively explore options like box plots and bar graphs, where the x-axis is divided into interquartile ranges---a technique I found both interesting and effective. 
 
-
-
-
-
-
+I believe, my approach in tidying and merging complex data sets and thoughtful interpretaiton of visualizations showed creativity and exceptional effort that could help me get engagement points for this assignment.
 
 <!-- Do not edit below this line. -->
 

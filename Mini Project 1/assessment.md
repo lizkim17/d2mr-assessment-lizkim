@@ -19,7 +19,7 @@ Section:1
 
 Mini-project title: How do economic,education, and environmental variables influence national happiness levels as reported by the World Population Review?
 
-Submission date:1/22
+Submission date:1/23
 
 Project GitHub subdirectory URL: https://github.com/lizkim17/d2mr-assessment-lizkim/tree/main/Mini%20Project%201 
 

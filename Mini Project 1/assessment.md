@@ -471,18 +471,13 @@ If you have demonstrated any off-the-syllabus skills related to the course but n
 
 ## Reflection
 
-Optionally, you may provide a brief reflection on your experience with this project. What did you learn? What would you do differently next time? What was the most challenging part of the project? What was the most rewarding? You do not have to answer these questions directly; they are just meant to help you think about your experience.
-
-Thoughtful reflections may earn engagement points.
-
-
 <!-- Reflection below this line -->
 
 Overall, I am proud of what I produced. It was challenging in many ways, but the process pushed me to grow, apply various skills we learned in class, and review some concepts I already knew. Finding and scraping data from different sources, followed by tidying and merging the data, was particularly demanding. Since I worked with many tables and variable names while managing several CSV files, staying organized was a significant challenge. However, this experience helped me develop better strategies for handling complex datasets.
 
 Creating different types of graphs was another hurdle, but it allowed me to creatively explore options, such as box plots where the x-axis is divided into interquartile ranges—a technique I found both interesting and effective.
 
-I believe my approach to tidying and merging complex datasets, along with my thoughtful interpretation of visualizations, demonstrated creativity and exceptional effort, which could contribute to earning engagement points for this assignment. Additionally, by producing a well-organized and cohesive report that flows seamlessly from research questions to conclusions, I think I met the standards for quality and clarity.
+I believe my approach to tidying and merging complex datasets, along with my thoughtful interpretation of visualizations, demonstrated creativity and exceptional effort, which could contribute to earning engagement points for this assignment. Additionally, by producing a project that reads like an actual report that flows seamlessly from research questions to future directions/implications, I think I have accomplished a great project.
 
 <!-- Do not edit below this line. -->
 

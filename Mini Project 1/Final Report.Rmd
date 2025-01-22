@@ -32,11 +32,15 @@ The reason why I'm working on this project is because it is important to underst
 
 # 2. Research Question {#research-question}
 
-How do economic,education, and environmental variables influence national happiness levels as reported by the World Population Review?
+Main Question: How do economic,education, and environmental variables influence national happiness levels as reported by the World Population Review?
+
+RQ1: How does GDP per capita associate with a country's happiness score?
+RQ2: How does environmental quality associate with a country's happiness score?
+RQ3: How does a country's literacy rate associate with its happiness score?
 
 # 3. Data Scraping & Tidying the Data
 
-The codes for data scraping are provided in a separate file: DataScraping.rmd. In this section, I included the code to tidy the tables and provided brief data descriptions. The datasets comprises five tables, each offering insights into countries' happiness scores, GDP, literacy rates, environmental performance, and life expectancy.
+Below is the code I used to scrap the data. 
 
 **Happiness Score**
 
@@ -125,7 +129,7 @@ write_csv(environmental_quality_table, "environmental_quality.csv")
 head(environmental_quality_table)
 ```
 
-Here, I included the code to tidy the tables and provided brief data descriptions. The datasets comprises four tables, each offering insights into countries' happiness scores, GDP, literacy rates, and environmental performance.
+Here, I included the code to tidy the tables. The datasets comprises four tables, each offering insights into countries' happiness scores, GDP, literacy rates, and environmental performance.
 
 ## Happiness Score Table
 
@@ -450,3 +454,30 @@ ggplot(cleaned_merged_data_lit, aes(x = literacy_bin, y = HappinessScore)) +
     plot.title = element_text(size = 12) 
   )
 ```
+# 5. Data Interpretation {#data-interpretation}
+
+## Data Analysis
+
+In addressing the main question, "How do economic, environmental, and educational variables influence national happiness levels as reported by the World Population Review?", this analysis provides evidence of significant associations between these factors and happiness scores.
+
+*H1: I hypothesize that higher GDP per capita, measured in USD based on IMF estimates, is associated with higher national happiness levels.*
+
+The scatter plot examining GDP per capita and happiness scores reveals a clear positive trend. Countries with higher GDP per capita tend to report higher happiness scores. This supports the hypothesis that wealthier countries have more resources to invest in public services such as healthcare, education, and infrastructure, which improve the overall quality of life.
+
+*H2: I hypothesize that better environmental quality, as measured by the Environmental Performance Index (EPI), is associated with higher happiness.*
+
+The line graph analyzing the association between environmental quality and happiness scores suggests a positive but variable association. Countries with higher environmental index scores generally report higher happiness levels, supporting the hypothesis that a clean and sustainable environment promotes well-being. However, the noisy pattern in the graph indicates that some countries with similar environmental scores differ significantly in happiness. The scatter plot graph shows a positive trend as well.
+
+*H3: I hypothesize that higher literacy rates, as a measure of education, are associated with higher happiness scores.*
+
+The box plot demonstrates a generally positive association between literacy rates and happiness scores across the first three quartiles (Q1 to Q3). However, Q3 (95.650--99.000) appears to have a slightly higher happiness scores compared to Q4 (\> 99.000), despite Q4 representing the countries with the highest literacy rates. This pattern could reflect diminishing returns of literacy on happiness or challenges unique to highly literate societies, such as increased societal pressures, disparities in resource allocation, or inequality.
+
+## Limitations and Future Directions
+
+One limitation of this study lies in the quality and consistency of the data used. Data sources may vary in their methods of collection, measurements, and reporting standards across countries. Future research should prioritize using standardized global datasets to minimize inconsistencies and align data collection periods across variables to ensure accuracy. Conducting longitudinal studies could further enhance the understanding of how changes in variables influence happiness over time, providing a more comprehensive and precise perspective on these relationships.
+
+As an extension of this study, we could perform statistical correlation tests, such as Pearson or Spearman correlation, to quantitatively assess the strength and direction of relationships between each variable and national happiness scores. This approach would allow us to identify which factor is most strongly correlated with happiness and could potentially be a primary determinant. Additionally, conducting regression analysis could help control for confounding variables and provide deeper insights into the relative importance of each factor in explaining variations in happiness.
+
+## Implications
+
+The positive link between GDP per capita and happiness emphasizes the importance of investments in public services like healthcare, education, and infrastructure, with a focus on reducing income inequality to maximize benefits. Similarly, the association between environmental quality and happiness underscores the need for sustainable policies that prioritize pollution reduction and green initiatives. The relationship between literacy rates and happiness suggests that education policies should focus not only on improving literacy but also on ensuring equitable access and opportunities, as the trend indicates that higher literacy rates do not always directly translate to higher happiness scores. Overall, these findings demonstrate the need for balanced strategies addressing economic, educational, and environmental factors to achieve sustainable well-being globally.

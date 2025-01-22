@@ -29,6 +29,7 @@ URL or instructions to access additional materials, if needed:
 ## Additional information
 
 1. Did you complete the project with direct collaborators or general support? If so, who did you collaborate with and what was/were their contribution(s)?
+
 No.
 
 2. Did you use LLMs or other AI models to generate text or code for this project? If so, which tools did you use and how did you use them? Remember in this class you *are* allowed (even encouraged) to use these tools for help with coding, but not for writing text. This can be very brief, just one or two sentences is fine unless you have more you'd like to add.
@@ -339,7 +340,7 @@ Below each learning objective is a list of general expectations for meeting that
     5. Chunks are organized sensibly and appear near the text they support
 
         -   [ ] Objective attempt
-        -   [v] Unique objective attempt
+        -   [ ] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -362,7 +363,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. Includes at least 1 footnote
 
         -   [ ] Objective attempt
-        -   [v] Unique objective attempt
+        -   [ ] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -458,9 +459,12 @@ If you have demonstrated any off-the-syllabus skills related to the course but n
 
 <!-- Explanation of demonstrated off-the-syllabus skills below this line -->
 
-1. scrape data from external sources
-2. create a table of contents with links to each heading
-3. tidying the data using bind_rows and pivot_wider
+1. scrape data from external sources -> scrapted data from wikipedia
+2. create a table of contents with links to each heading -> it is at the top of the document
+3. tidying the data using bind_rows and pivot_wider -> under Descriptive Statistics and Plots
+4. Merge different datasets -> when creating plots
+5. Renaming columns -> when creating plots
+6. Add bins to the data using the specified quartiles when creating plots -> when creating plot for RQ3.
 
 <!-- Explanation of demonstrated off-the-syllabus skills above this line -->
 
@@ -474,9 +478,11 @@ Thoughtful reflections may earn engagement points.
 
 <!-- Reflection below this line -->
 
-Overall, I am proud of what I produced. It was undoubtedly challenging in many ways, but the process pushed me to grow and apply various skills we learned in class and also review some concepts that I already knew. Finding and scraping data from different sources, followed by tidying and merging the data, was particularly demanding. Since I worked with many tables and variable names while managing several CSV files, staying organized was a significant challenge. However, this experience also helped me build better strategies for handling complex datasets. Creating different types of graphs was another hurdle, but it allowed me to creatively explore options like box plots and bar graphs, where the x-axis is divided into interquartile ranges---a technique I found both interesting and effective. 
+Overall, I am proud of what I produced. It was challenging in many ways, but the process pushed me to grow, apply various skills we learned in class, and review some concepts I already knew. Finding and scraping data from different sources, followed by tidying and merging the data, was particularly demanding. Since I worked with many tables and variable names while managing several CSV files, staying organized was a significant challenge. However, this experience helped me develop better strategies for handling complex datasets.
 
-I believe, my approach in tidying and merging complex data sets and thoughtful interpretaiton of visualizations showed creativity and exceptional effort that could help me get engagement points for this assignment.
+Creating different types of graphs was another hurdle, but it allowed me to creatively explore options, such as box plots where the x-axis is divided into interquartile ranges—a technique I found both interesting and effective.
+
+I believe my approach to tidying and merging complex datasets, along with my thoughtful interpretation of visualizations, demonstrated creativity and exceptional effort, which could contribute to earning engagement points for this assignment. Additionally, by producing a well-organized and cohesive report that flows seamlessly from research questions to conclusions, I think I met the standards for quality and clarity.
 
 <!-- Do not edit below this line. -->
 
@@ -484,7 +490,7 @@ I believe, my approach in tidying and merging complex data sets and thoughtful i
 
 -   Grader:
 -   Date:
--   Points toward unique objectives (up to 20):
+-   Points toward unique objectives (up to 20): 
 -   Additional points (up to 20):
 -   TA provisional engagement points (up to 10):
 -   Final approved engagement points (up to 10):

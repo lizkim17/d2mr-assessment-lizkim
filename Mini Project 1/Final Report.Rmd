@@ -129,7 +129,7 @@ write_csv(environmental_quality_table, "environmental_quality.csv")
 head(environmental_quality_table)
 ```
 
-Here, I included the code to tidy the tables. The datasets comprises four tables, each offering insights into countries' happiness scores, GDP, literacy rates, and environmental performance.
+Here, I included the code to tidy the tables. The datasets comprises four tables, each offering insights into countries' happiness scores, GDP, literacy rates, and environmental performance. To briefly define “tidy” data and explain its advantages and disadvantages, 
 
 ## Happiness Score Table
 

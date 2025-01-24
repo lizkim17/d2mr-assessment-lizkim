@@ -1,0 +1,1287 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Final Report},
+  pdfauthor={Liz Kim},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Final Report}
+\author{Liz Kim}
+\date{1/21/2025}
+
+\begin{document}
+\maketitle
+
+\hypertarget{table-of-contents}{%
+\subsection{Table of Contents}\label{table-of-contents}}
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{introduction}{1. Introduction}
+\item
+  \protect\hyperlink{research-question}{2. Research Question}
+\item
+  \protect\hyperlink{Data-Scaping-and-Tidying-the-Data}{3. Data Scraping
+  \& Tidying the Data}
+\item
+  \protect\hyperlink{descriptive-statistics-and-plots}{4. Descriptive
+  Statistics and Plots}
+\item
+  \protect\hyperlink{data-interpretation}{5. Data Interpretation}
+\end{itemize}
+
+\hypertarget{introduction}{%
+\section{1. Introduction}\label{introduction}}
+
+This project investigates the factors associated with national
+happiness, utilizing happiness scores from the World Population Review
+and key factors from Wikipedia tables. Key variables include GDP per
+capita, environmental quality, abd literacy rates offering insights into
+the economic, environmental, and educational factors that influence
+happiness levels across countries.
+
+The reason why I'm working on this project is because it is important to
+understand how these factors contribute to national happiness. Happiness
+is a critical measure of well-being, and identifying its determinants is
+vital.
+
+\hypertarget{research-question}{%
+\section{2. Research Question}\label{research-question}}
+
+Main Question: How do economic,education, and environmental variables
+influence national happiness levels as reported by the World Population
+Review?
+
+RQ1: How does GDP per capita associate with a country's happiness score?
+RQ2: How does environmental quality associate with a country's happiness
+score? RQ3: How does a country's literacy rate associate with its
+happiness score?
+
+\hypertarget{data-scraping-tidying-the-data}{%
+\section{3. Data Scraping \& Tidying the
+Data}\label{data-scraping-tidying-the-data}}
+
+Below is the code I used to scrap the data.
+
+\textbf{Happiness Score}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the CSV file}
+\NormalTok{happiest\_countries }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"happiest{-}countries{-}in{-}the{-}world{-}2024.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 145 Columns: 8
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): country
+## dbl (7): HappiestCountriesWorldHappinessReportRankings2024, HappiestCountrie...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Preview the data}
+\FunctionTok{head}\NormalTok{(happiest\_countries)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 8
+##   country       HappiestCountriesWorl~1 HappiestCountriesWor~2 LatestScoreChange
+##   <chr>                           <dbl>                  <dbl>             <dbl>
+## 1 India                             126                   4.05            0.0140
+## 2 China                              60                   5.97            0.152 
+## 3 United States                      23                   6.73           -0.164 
+## 4 Indonesia                          80                   5.57            0.293 
+## 5 Pakistan                          108                   4.66            0.105 
+## 6 Nigeria                           102                   4.88           -0.101 
+## # i abbreviated names: 1: HappiestCountriesWorldHappinessReportRankings2024,
+## #   2: HappiestCountriesWorldHappinessReportScore2024
+## # i 4 more variables: HappiestCountriesWorldHappiessReportRankings2023 <dbl>,
+## #   HappiestCountriesWorldHappiessReportScore2023 <dbl>,
+## #   HappiestCountriesWorldHappiessReportRankings2022 <dbl>,
+## #   HappiestCountriesWorldHappiessReportScore2022 <dbl>
+\end{verbatim}
+
+I requested this data table from WorldPopulationReview.com. I received
+an excel file through my email.
+
+\textbf{GDP per Capita}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save the URL and scrape the webpage}
+\NormalTok{url }\OtherTok{\textless{}{-}} \StringTok{"https://en.wikipedia.org/wiki/List\_of\_countries\_by\_GDP\_(nominal)\_per\_capita"}
+\NormalTok{gdp\_page }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\AttributeTok{x =}\NormalTok{ url)}
+
+\CommentTok{\# Extract all tables with the class "wikitable"}
+\NormalTok{tables }\OtherTok{\textless{}{-}} \FunctionTok{html\_elements}\NormalTok{(gdp\_page, }\AttributeTok{css =} \StringTok{"table.wikitable"}\NormalTok{)}
+
+\CommentTok{\# Convert the first table to a data frame}
+\NormalTok{gdp\_per\_capita\_table }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(tables[[}\DecValTok{1}\NormalTok{]], }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Save the table as a CSV file}
+\FunctionTok{write\_csv}\NormalTok{(gdp\_per\_capita\_table, }\StringTok{"gdp\_per\_capita.csv"}\NormalTok{)}
+
+\CommentTok{\# Preview the table}
+\FunctionTok{head}\NormalTok{(gdp\_per\_capita\_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 7
+##   `Country/Territory` `IMF[4][5]` `IMF[4][5]` `World Bank[6]` `World Bank[6]`
+##   <chr>               <chr>       <chr>       <chr>           <chr>          
+## 1 Country/Territory   Estimate    Year        Estimate        Year           
+## 2 Monaco              —           —           240,862         2022           
+## 3 Liechtenstein       —           —           187,267         2022           
+## 4 Luxembourg          135,321     2024        128,259         2023           
+## 5 Bermuda             —           —           123,091         2022           
+## 6 Switzerland         106,098     2024        99,995          2023           
+## # i 2 more variables: `United Nations[7]` <chr>, `United Nations[7]` <chr>
+\end{verbatim}
+
+\textbf{Education (Literacy Rate)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save the URL and scrape the webpage}
+\NormalTok{url }\OtherTok{\textless{}{-}} \StringTok{"https://en.wikipedia.org/wiki/List\_of\_countries\_by\_literacy\_rate"}
+\NormalTok{literacy\_page }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\AttributeTok{x =}\NormalTok{ url)}
+
+\CommentTok{\# Extract all tables with the class "wikitable"}
+\NormalTok{tables }\OtherTok{\textless{}{-}} \FunctionTok{html\_elements}\NormalTok{(literacy\_page, }\AttributeTok{css =} \StringTok{"table.wikitable"}\NormalTok{)}
+
+\CommentTok{\# Convert all table nodes into a list of data frames}
+\NormalTok{all\_tables }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(tables, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Inspect tables to find the one I want to extract}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(all\_tables)) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Table"}\NormalTok{, i))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(all\_tables[[i]]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Table 1"
+## # A tibble: 6 x 9
+##   Country          `Youth(15 to 24)` `Youth(15 to 24)` `Adult(25+)` `Adult(25+)`
+##   <chr>            <chr>             <chr>             <chr>        <chr>       
+## 1 Country          "Rate"            "Year"            "Rate"       "Year"      
+## 2 Afghanistan *    "65.0"            "2020[4]"         "31.7"       "2011"      
+## 3 Albania *        "99.2"            "2012"            "97.2"       "2012"      
+## 4 Algeria *        "93.8"            "2008"            "75.1"       "2008"      
+## 5 American Samoa * "97.7"            "1980"            "97.3"       "1980"      
+## 6 Andorra *        ""                ""                ""           ""          
+## # i 4 more variables: `Elderly(65+)` <chr>, `Elderly(65+)` <chr>,
+## #   `Youth GenderParity Index` <chr>, `Youth GenderParity Index` <chr>
+## [1] "Table 2"
+## # A tibble: 6 x 6
+##   Country   Literacy rate[12][13~1 Literacy rate[12][13~2 Literacy rate[12][13~3
+##   <chr>     <chr>                  <chr>                  <chr>                 
+## 1 Country   Total                  Male                   Female                
+## 2 Afghanis~ 37.3%                  52.1%                  22.6%                 
+## 3 Albania * 98.1%                  98.5%                  97.8%                 
+## 4 Algeria * 81.4%                  87.4%                  75.3%                 
+## 5 Andorra * 100.0%                 100.0%                 100.0%                
+## 6 Angola *  71.1%                  82.0%                  60.7%                 
+## # i abbreviated names: 1: `Literacy rate[12][13][text–source integrity?]`,
+## #   2: `Literacy rate[12][13][text–source integrity?]`,
+## #   3: `Literacy rate[12][13][text–source integrity?]`
+## # i 2 more variables: `Literacy rate[12][13][text–source integrity?]` <chr>,
+## #   `Literacy rate[12][13][text–source integrity?]` <chr>
+## [1] "Table 3"
+## # A tibble: 6 x 7
+##   Territory      `Literacy rate (all)` `Male literacy` `Female literacy`
+##   <chr>          <chr>                 <chr>           <chr>            
+## 1 Aruba          97.5%                 97.5%           97.5%            
+## 2 Cayman Islands 98.9%                 98.7%           99.0%            
+## 3 Guadeloupe     96.5%                 96.4%           96.6%            
+## 4 Guam           99.8%                 99.8%           99.8%            
+## 5 Kosovo         91.9%                 96.6%           87.5%            
+## 6 Macau          96.2%                 98.0%           94.6%            
+## # i 3 more variables: `Gender difference[a]` <chr>, Year <chr>, Note <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract the second table }
+\NormalTok{literacy\_rate\_table }\OtherTok{\textless{}{-}}\NormalTok{ all\_tables[[}\DecValTok{2}\NormalTok{]]}
+\FunctionTok{write\_csv}\NormalTok{(literacy\_rate\_table, }\StringTok{"literacy\_rate.csv"}\NormalTok{)}
+
+\CommentTok{\# Preview the table}
+\FunctionTok{head}\NormalTok{(literacy\_rate\_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##   Country   Literacy rate[12][13~1 Literacy rate[12][13~2 Literacy rate[12][13~3
+##   <chr>     <chr>                  <chr>                  <chr>                 
+## 1 Country   Total                  Male                   Female                
+## 2 Afghanis~ 37.3%                  52.1%                  22.6%                 
+## 3 Albania * 98.1%                  98.5%                  97.8%                 
+## 4 Algeria * 81.4%                  87.4%                  75.3%                 
+## 5 Andorra * 100.0%                 100.0%                 100.0%                
+## 6 Angola *  71.1%                  82.0%                  60.7%                 
+## # i abbreviated names: 1: `Literacy rate[12][13][text–source integrity?]`,
+## #   2: `Literacy rate[12][13][text–source integrity?]`,
+## #   3: `Literacy rate[12][13][text–source integrity?]`
+## # i 2 more variables: `Literacy rate[12][13][text–source integrity?]` <chr>,
+## #   `Literacy rate[12][13][text–source integrity?]` <chr>
+\end{verbatim}
+
+\textbf{Environmental Quality}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save the URL and scrape the webpage}
+\NormalTok{url }\OtherTok{\textless{}{-}} \StringTok{"https://en.wikipedia.org/wiki/Environmental\_Performance\_Index"}
+\NormalTok{environment\_page }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\AttributeTok{x =}\NormalTok{ url)}
+
+\CommentTok{\# Extract all tables with the class "wikitable"}
+\NormalTok{tables }\OtherTok{\textless{}{-}} \FunctionTok{html\_elements}\NormalTok{(environment\_page, }\AttributeTok{css =} \StringTok{"table.wikitable"}\NormalTok{)}
+
+\CommentTok{\# Convert all table nodes into a list of data frames}
+\NormalTok{all\_tables }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(tables, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Inspect tables to find the one I want to extract}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(all\_tables)) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Table"}\NormalTok{, i))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(all\_tables[[i]]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Table 1"
+## # A tibble: 6 x 6
+##   `Policy Objective` `Wt. (%)` `Issue Category`    `Wt. (%)` Indicator `Wt. (%)`
+##   <chr>              <chr>     <chr>               <chr>     <chr>     <chr>    
+## 1 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Marine K~ 12.0     
+## 2 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Marine H~ 12.0     
+## 3 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Marine P~ 2.0      
+## 4 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Protecte~ 12.0     
+## 5 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Species ~ 16.0     
+## 6 Ecosystem Vitality 45%       Biodiversity & Hab~ 25        Terrestr~ 10.0     
+## [1] "Table 2"
+## # A tibble: 6 x 5
+##   Country              Region                     Value Trend `Rank 2024`
+##   <chr>                <chr>                      <dbl> <chr>       <int>
+## 1 Afghanistan          South Asia                  31   12.8          144
+## 2 Angola               Sub-Saharan Africa          40.1 8.2           106
+## 3 Albania              Europe & Central Asia       52.2 6.1            47
+## 4 United Arab Emirates Middle East & North Africa  51.6 9.1            48
+## 5 Argentina            Latin America & Caribbean   47   1.1            70
+## 6 Armenia              Europe & Central Asia       44.9 2.0            80
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract the second table (Environmental Performance Index)}
+\NormalTok{environmental\_quality\_table }\OtherTok{\textless{}{-}}\NormalTok{ all\_tables[[}\DecValTok{2}\NormalTok{]]}
+\FunctionTok{write\_csv}\NormalTok{(environmental\_quality\_table, }\StringTok{"environmental\_quality.csv"}\NormalTok{)}
+
+\CommentTok{\# Preview the table}
+\FunctionTok{head}\NormalTok{(environmental\_quality\_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   Country              Region                     Value Trend `Rank 2024`
+##   <chr>                <chr>                      <dbl> <chr>       <int>
+## 1 Afghanistan          South Asia                  31   12.8          144
+## 2 Angola               Sub-Saharan Africa          40.1 8.2           106
+## 3 Albania              Europe & Central Asia       52.2 6.1            47
+## 4 United Arab Emirates Middle East & North Africa  51.6 9.1            48
+## 5 Argentina            Latin America & Caribbean   47   1.1            70
+## 6 Armenia              Europe & Central Asia       44.9 2.0            80
+\end{verbatim}
+
+Here, I included the code to tidy the tables. The datasets comprises
+four tables, each offering insights into countries' happiness scores,
+GDP, literacy rates, and environmental performance.
+
+\hypertarget{happiness-score-table}{%
+\subsection{Happiness Score Table}\label{happiness-score-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the previously saved CSV file}
+\NormalTok{happiest\_countries }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"happiest{-}countries{-}in{-}the{-}world{-}2024.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 145 Columns: 8
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): country
+## dbl (7): HappiestCountriesWorldHappinessReportRankings2024, HappiestCountrie...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean and rename the happiest\_countries dataset}
+\NormalTok{happiest\_countries\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ happiest\_countries }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(country, HappiestCountriesWorldHappinessReportScore2024) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(HappiestCountriesWorldHappinessReportScore2024)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{HappinessScore =}\NormalTok{ HappiestCountriesWorldHappinessReportScore2024) }
+
+\CommentTok{\# Preview and save the cleaned table}
+\FunctionTok{head}\NormalTok{(happiest\_countries\_cleaned)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   country       HappinessScore
+##   <chr>                  <dbl>
+## 1 India                   4.05
+## 2 China                   5.97
+## 3 United States           6.73
+## 4 Indonesia               5.57
+## 5 Pakistan                4.66
+## 6 Nigeria                 4.88
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(happiest\_countries\_cleaned, }\StringTok{"happiest\_countries\_cleaned.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{gdp-table}{%
+\subsection{GDP Table}\label{gdp-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the previously saved CSV file}
+\NormalTok{gdp\_per\_capita\_table }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"gdp\_per\_capita.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## Rows: 224 Columns: 7
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (7): Country/Territory, IMF[4][5]...2, IMF[4][5]...3, World Bank[6]...4,...
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `IMF[4][5]` -> `IMF[4][5]...2`
+## * `IMF[4][5]` -> `IMF[4][5]...3`
+## * `World Bank[6]` -> `World Bank[6]...4`
+## * `World Bank[6]` -> `World Bank[6]...5`
+## * `United Nations[7]` -> `United Nations[7]...6`
+## * `United Nations[7]` -> `United Nations[7]...7`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rename columns}
+\FunctionTok{colnames}\NormalTok{(gdp\_per\_capita\_table) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"country"}\NormalTok{, }\StringTok{"IMF\_estimate"}\NormalTok{, }\StringTok{"IMF\_year"}\NormalTok{, }
+                                    \StringTok{"World\_Bank\_estimate"}\NormalTok{, }\StringTok{"World\_Bank\_year"}\NormalTok{, }
+                                    \StringTok{"UN\_estimate"}\NormalTok{, }\StringTok{"UN\_year"}\NormalTok{)}
+
+\CommentTok{\# Tidy the table}
+\NormalTok{fill\_missing\_values }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(country, IMF\_estimate) }\SpecialCharTok{\%\textgreater{}\%}              
+    \FunctionTok{mutate}\NormalTok{(}
+      \AttributeTok{IMF\_estimate =} \FunctionTok{ifelse}\NormalTok{(IMF\_estimate }\SpecialCharTok{==} \StringTok{"{-}"}\NormalTok{, }\ConstantTok{NA}\NormalTok{, IMF\_estimate), }
+      \AttributeTok{IMF\_estimate =} \FunctionTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{, }\StringTok{""}\NormalTok{, IMF\_estimate),      }
+      \AttributeTok{IMF\_estimate =} \FunctionTok{as.numeric}\NormalTok{(IMF\_estimate)         }
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{fill}\NormalTok{(IMF\_estimate, }\AttributeTok{.direction =} \StringTok{"down"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}       
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(IMF\_estimate)) }\SpecialCharTok{\%\textgreater{}\%}                  
+    \FunctionTok{rename}\NormalTok{(}\AttributeTok{estimate =}\NormalTok{ IMF\_estimate)                  }
+\NormalTok{\}}
+
+\CommentTok{\# Apply the cleaning function}
+\NormalTok{gdp\_per\_capita\_table\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{fill\_missing\_values}\NormalTok{(gdp\_per\_capita\_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There was 1 warning in `mutate()`.
+## i In argument: `IMF_estimate = as.numeric(IMF_estimate)`.
+## Caused by warning:
+## ! NAs introduced by coercion
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Preview and save the cleaned table}
+\FunctionTok{head}\NormalTok{(gdp\_per\_capita\_table\_cleaned) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   country        estimate
+##   <chr>             <dbl>
+## 1 Luxembourg       135321
+## 2 Bermuda          135321
+## 3 Switzerland      106098
+## 4 Ireland          103500
+## 5 Cayman Islands   103500
+## 6 Isle of Man      103500
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(gdp\_per\_capita\_table\_cleaned, }\StringTok{"gdp\_per\_capita\_table\_cleaned.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{education-literacy-rate-table}{%
+\subsection{Education (Literacy Rate
+Table)}\label{education-literacy-rate-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the previously saved CSV file}
+\NormalTok{literacy\_rate\_table }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"literacy\_rate.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## Rows: 197 Columns: 6
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (6): Country, Literacy rate[12][13][text–source integrity?]...2, Literac...
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `Literacy rate[12][13][text–source integrity?]` -> `Literacy
+##   rate[12][13][text–source integrity?]...2`
+## * `Literacy rate[12][13][text–source integrity?]` -> `Literacy
+##   rate[12][13][text–source integrity?]...3`
+## * `Literacy rate[12][13][text–source integrity?]` -> `Literacy
+##   rate[12][13][text–source integrity?]...4`
+## * `Literacy rate[12][13][text–source integrity?]` -> `Literacy
+##   rate[12][13][text–source integrity?]...5`
+## * `Literacy rate[12][13][text–source integrity?]` -> `Literacy
+##   rate[12][13][text–source integrity?]...6`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(literacy\_rate\_table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##   Country   Literacy rate[12][13~1 Literacy rate[12][13~2 Literacy rate[12][13~3
+##   <chr>     <chr>                  <chr>                  <chr>                 
+## 1 Country   Total                  Male                   Female                
+## 2 Afghanis~ 37.3%                  52.1%                  22.6%                 
+## 3 Albania * 98.1%                  98.5%                  97.8%                 
+## 4 Algeria * 81.4%                  87.4%                  75.3%                 
+## 5 Andorra * 100.0%                 100.0%                 100.0%                
+## 6 Angola *  71.1%                  82.0%                  60.7%                 
+## # i abbreviated names: 1: `Literacy rate[12][13][text–source integrity?]...2`,
+## #   2: `Literacy rate[12][13][text–source integrity?]...3`,
+## #   3: `Literacy rate[12][13][text–source integrity?]...4`
+## # i 2 more variables:
+## #   `Literacy rate[12][13][text–source integrity?]...5` <chr>,
+## #   `Literacy rate[12][13][text–source integrity?]...6` <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rename columns}
+\FunctionTok{colnames}\NormalTok{(literacy\_rate\_table) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"country"}\NormalTok{, }\StringTok{"total"}\NormalTok{, }\StringTok{"male"}\NormalTok{, }\StringTok{"female"}\NormalTok{, }\StringTok{"gap"}\NormalTok{, }\StringTok{"year"}\NormalTok{)}
+
+\CommentTok{\# Tidy the data}
+\NormalTok{literacy\_rate\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ literacy\_rate\_table }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(country, total, year) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{*"}\NormalTok{, }\StringTok{""}\NormalTok{, country),  }
+    \AttributeTok{total =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{gsub}\NormalTok{(}\StringTok{"\%"}\NormalTok{, }\StringTok{""}\NormalTok{, total)), }
+    \AttributeTok{year =} \FunctionTok{as.numeric}\NormalTok{(year)                 }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There were 2 warnings in `mutate()`.
+## The first warning was:
+## i In argument: `total = as.numeric(gsub("%", "", total))`.
+## Caused by warning:
+## ! NAs introduced by coercion
+## i Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter out rows where country == "Country" or "World"}
+\NormalTok{literacy\_rate\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ literacy\_rate\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{!=} \StringTok{"Country"}\NormalTok{,              }
+\NormalTok{         country }\SpecialCharTok{!=} \StringTok{"World"}\NormalTok{)    }
+
+\CommentTok{\# Preview and save the cleaned table}
+\FunctionTok{head}\NormalTok{(literacy\_rate\_table\_cleaned)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   country              total  year
+##   <chr>                <dbl> <dbl>
+## 1 Afghanistan           37.3  2021
+## 2 Albania               98.1  2018
+## 3 Algeria               81.4  2018
+## 4 Andorra              100    2016
+## 5 Angola                71.1  2015
+## 6 Antigua and Barbuda   99    2015
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(literacy\_rate\_table\_cleaned, }\StringTok{"literacy\_rate\_table\_cleaned.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{environmental-quality-table}{%
+\subsection{Environmental Quality
+Table}\label{environmental-quality-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the previously saved CSV file}
+\NormalTok{environmental\_quality\_table }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"environmental\_quality.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 179 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (3): Country, Region, Trend
+## dbl (2): Value, Rank 2024
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tidy the data}
+\NormalTok{environmental\_quality\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ environmental\_quality\_table }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\AttributeTok{country =} \StringTok{\textasciigrave{}}\AttributeTok{Country}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{value =} \StringTok{\textasciigrave{}}\AttributeTok{Value}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\CommentTok{\# Preview and save the cleaned table}
+\FunctionTok{head}\NormalTok{(environmental\_quality\_table\_cleaned)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   country              value
+##   <chr>                <dbl>
+## 1 Afghanistan           31  
+## 2 Angola                40.1
+## 3 Albania               52.2
+## 4 United Arab Emirates  51.6
+## 5 Argentina             47  
+## 6 Armenia               44.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(environmental\_quality\_table\_cleaned, }\StringTok{"environmental\_quality\_table\_cleaned.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{descriptive-statistics-and-plots}{%
+\section{4. Descriptive Statistics and
+Plots}\label{descriptive-statistics-and-plots}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean country names function}
+\NormalTok{clean\_country\_names }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, }\AttributeTok{country\_column =} \StringTok{"country"}\NormalTok{) \{}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column) }\SpecialCharTok{:}\ErrorTok{=} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, }\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column))) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column) }\SpecialCharTok{:}\ErrorTok{=} \FunctionTok{trimws}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column))) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column) }\SpecialCharTok{:}\ErrorTok{=} \FunctionTok{tolower}\NormalTok{(}\SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(country\_column)))}
+\NormalTok{\}}
+
+\CommentTok{\# Clean the country names in all datasets}
+\NormalTok{happiest\_countries\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{clean\_country\_names}\NormalTok{(happiest\_countries\_cleaned)}
+\NormalTok{gdp\_per\_capita\_table\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{clean\_country\_names}\NormalTok{(gdp\_per\_capita\_table\_cleaned)}
+\NormalTok{literacy\_rate\_table\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{clean\_country\_names}\NormalTok{(literacy\_rate\_table\_cleaned)}
+\NormalTok{environmental\_quality\_table\_cleaned }\OtherTok{\textless{}{-}} \FunctionTok{clean\_country\_names}\NormalTok{(environmental\_quality\_table\_cleaned)}
+
+\CommentTok{\# Rename columns to prepare for merging}
+\NormalTok{gdp\_data }\OtherTok{\textless{}{-}}\NormalTok{ gdp\_per\_capita\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Value =}\NormalTok{ estimate) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Variable =} \StringTok{"GDP"}\NormalTok{)}
+
+\NormalTok{education\_data }\OtherTok{\textless{}{-}}\NormalTok{ literacy\_rate\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Value =}\NormalTok{ total) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Variable =} \StringTok{"Education"}\NormalTok{)}
+
+\NormalTok{env\_quality\_data }\OtherTok{\textless{}{-}}\NormalTok{ environmental\_quality\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Value =}\NormalTok{ value) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Variable =} \StringTok{"EnvironmentalQuality"}\NormalTok{)}
+
+\NormalTok{happiness\_data }\OtherTok{\textless{}{-}}\NormalTok{ happiest\_countries\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Value =}\NormalTok{ HappinessScore) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Variable =} \StringTok{"HappinessScore"}\NormalTok{)}
+
+\CommentTok{\# Combine all datasets into a single long format}
+\NormalTok{long\_data }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(}
+\NormalTok{  gdp\_data,}
+\NormalTok{  education\_data,}
+\NormalTok{  env\_quality\_data,}
+\NormalTok{  happiness\_data}
+\NormalTok{)}
+
+\CommentTok{\# Pivot to wide format}
+\NormalTok{wide\_data }\OtherTok{\textless{}{-}}\NormalTok{ long\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}
+    \AttributeTok{names\_from =}\NormalTok{ Variable,}
+    \AttributeTok{values\_from =}\NormalTok{ Value}
+\NormalTok{  )}
+
+\CommentTok{\# Remove year and sexgap columns}
+\NormalTok{wide\_data\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ wide\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{year) }
+
+\CommentTok{\# Display the Merged Data Overview}
+\NormalTok{wide\_data\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Country"}\NormalTok{, }\StringTok{"GDP"}\NormalTok{, }\StringTok{"Education"}\NormalTok{, }\StringTok{"Environmental Quality"}\NormalTok{, }\StringTok{"Happiness Score"}\NormalTok{),}
+    \AttributeTok{caption =} \StringTok{"Merged Data Overview"}\NormalTok{,}
+    \AttributeTok{format =} \StringTok{"markdown"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\caption{Merged Data Overview}\tabularnewline
+\toprule
+Country & GDP & Education & Environmental Quality & Happiness Score \\
+\midrule
+\endfirsthead
+\toprule
+Country & GDP & Education & Environmental Quality & Happiness Score \\
+\midrule
+\endhead
+luxembourg & 135321 & 100 & 75.1 & 7.12 \\
+bermuda & 135321 & NA & NA & NA \\
+switzerland & 106098 & 99 & 67.8 & 7.06 \\
+ireland & 103500 & 99 & 65.8 & 6.84 \\
+cayman islands & 103500 & NA & NA & NA \\
+isle of man & 103500 & NA & NA & NA \\
+norway & 90434 & 100 & 69.9 & 7.30 \\
+singapore & 89370 & NA & 53.0 & 6.52 \\
+united states & 86601 & 86 & 57.2 & 6.73 \\
+iceland & 85787 & 99 & 64.3 & 7.53 \\
+\bottomrule
+\end{longtable}
+
+I created the Merged Data Overview table to provide a comprehensive view
+of all the important variables in a single table. However, due to
+differences in country names and variations in the countries included in
+each dataset, many NA values are present. Therefore, for the
+visualizations, I will analyze two variables at a time separately.
+Despite the NA values, this table is still useful for quickly skimming
+through the data.
+
+\hypertarget{rq1-how-does-gdp-per-capita-associate-with-a-countrys-happiness-score}{%
+\subsection{RQ1: How does GDP per capita associate with a country's
+happiness
+score?}\label{rq1-how-does-gdp-per-capita-associate-with-a-countrys-happiness-score}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean the country names in gdp\_per\_capita\_table\_cleaned}
+\NormalTok{gdp\_per\_capita\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ gdp\_per\_capita\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                   
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                      }
+
+\CommentTok{\# Clean the country names in happiest\_countries\_cleaned}
+\NormalTok{happiest\_countries\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ happiest\_countries\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                    
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                     }
+
+\CommentTok{\# Merge GDP and HappinessScore data}
+\NormalTok{merged\_data }\OtherTok{\textless{}{-}}\NormalTok{ gdp\_per\_capita\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(happiest\_countries\_cleaned, }\AttributeTok{by =} \StringTok{"country"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(merged\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 221 x 3
+##    country        estimate HappinessScore
+##    <chr>             <dbl>          <dbl>
+##  1 luxembourg       135321           7.12
+##  2 bermuda          135321          NA   
+##  3 switzerland      106098           7.06
+##  4 ireland          103500           6.84
+##  5 cayman islands   103500          NA   
+##  6 isle of man      103500          NA   
+##  7 norway            90434           7.3 
+##  8 singapore         89370           6.52
+##  9 united states     86601           6.73
+## 10 iceland           85787           7.53
+## # i 211 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove missing values}
+\NormalTok{cleaned\_merged\_data }\OtherTok{\textless{}{-}}\NormalTok{ merged\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(estimate), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(HappinessScore))}
+\FunctionTok{print}\NormalTok{(cleaned\_merged\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 140 x 3
+##    country       estimate HappinessScore
+##    <chr>            <dbl>          <dbl>
+##  1 luxembourg      135321           7.12
+##  2 switzerland     106098           7.06
+##  3 ireland         103500           6.84
+##  4 norway           90434           7.3 
+##  5 singapore        89370           6.52
+##  6 united states    86601           6.73
+##  7 iceland          85787           7.53
+##  8 denmark          69273           7.58
+##  9 netherlands      67984           7.32
+## 10 australia        65966           7.06
+## # i 130 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# View summary statistics }
+\FunctionTok{summary}\NormalTok{(cleaned\_merged\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"estimate"}\NormalTok{, }\StringTok{"HappinessScore"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     estimate      HappinessScore 
+##  Min.   :   411   Min.   :1.720  
+##  1st Qu.:  2680   1st Qu.:4.635  
+##  Median :  7507   Median :5.805  
+##  Mean   : 19722   Mean   :5.522  
+##  3rd Qu.: 29399   3rd Qu.:6.412  
+##  Max.   :135321   Max.   :7.740
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the scatter plot}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cleaned\_merged\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ estimate, }\AttributeTok{y =}\NormalTok{ HappinessScore)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}                
+    \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+}          
+    \FunctionTok{labs}\NormalTok{(}
+        \AttributeTok{x =} \StringTok{"GDP Per Capita (USD)"}\NormalTok{,}
+        \AttributeTok{y =} \StringTok{"Happiness Score"}\NormalTok{,}
+        \AttributeTok{title =} \StringTok{"GDP Per Capita and Happiness Score"}
+\NormalTok{    ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Final-Report_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\hypertarget{rq2-how-does-environmental-quality-associate-with-a-countrys-happiness-score}{%
+\subsection{RQ2: How does environmental quality associate with a
+country's happiness
+score?}\label{rq2-how-does-environmental-quality-associate-with-a-countrys-happiness-score}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean the country names in environmental\_quality\_table\_cleaned}
+\NormalTok{environmental\_quality\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ environmental\_quality\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                     }
+
+\CommentTok{\# Clean the country names in happiest\_countries\_cleaned}
+\NormalTok{happiest\_countries\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ happiest\_countries\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                    
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                     }
+
+\CommentTok{\# Merge environmental quality data with happiness data}
+\NormalTok{merged\_data\_env }\OtherTok{\textless{}{-}}\NormalTok{ environmental\_quality\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(happiest\_countries\_cleaned, }\AttributeTok{by =} \StringTok{"country"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(merged\_data\_env)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 179 x 3
+##    country              value HappinessScore
+##    <chr>                <dbl>          <dbl>
+##  1 afghanistan           31             1.72
+##  2 angola                40.1          NA   
+##  3 albania               52.2           5.3 
+##  4 united arab emirates  51.6           6.73
+##  5 argentina             47             6.19
+##  6 armenia               44.9           5.46
+##  7 antigua and barbuda   55.6          NA   
+##  8 australia             63.1           7.06
+##  9 austria               68.9           6.91
+## 10 azerbaijan            40.5           4.89
+## # i 169 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove rows with missing values in value or HappinessScore}
+\NormalTok{cleaned\_merged\_data\_env }\OtherTok{\textless{}{-}}\NormalTok{ merged\_data\_env }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(value), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(HappinessScore))}
+\FunctionTok{print}\NormalTok{(cleaned\_merged\_data\_env)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 135 x 3
+##    country              value HappinessScore
+##    <chr>                <dbl>          <dbl>
+##  1 afghanistan           31             1.72
+##  2 albania               52.2           5.3 
+##  3 united arab emirates  51.6           6.73
+##  4 argentina             47             6.19
+##  5 armenia               44.9           5.46
+##  6 australia             63.1           7.06
+##  7 austria               68.9           6.91
+##  8 azerbaijan            40.5           4.89
+##  9 belgium               66.8           6.89
+## 10 benin                 37.8           4.38
+## # i 125 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# View summary statistics }
+\FunctionTok{summary}\NormalTok{(cleaned\_merged\_data\_env[, }\FunctionTok{c}\NormalTok{(}\StringTok{"value"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      value      
+##  Min.   :24.60  
+##  1st Qu.:38.40  
+##  Median :46.10  
+##  Mean   :47.83  
+##  3rd Qu.:56.70  
+##  Max.   :75.70
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the line graph}
+\FunctionTok{ggplot}\NormalTok{(cleaned\_merged\_data\_env, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value, }\AttributeTok{y =}\NormalTok{ HappinessScore)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Environmental Index and Happiness Score"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Environmental Index"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Happiness Score"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\includegraphics{Final-Report_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the scatter plot}
+\FunctionTok{ggplot}\NormalTok{(cleaned\_merged\_data\_env, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value, }\AttributeTok{y =}\NormalTok{ HappinessScore)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}               
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Environmental Index and Happiness Score"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Environmental Index"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Happiness Score"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Final-Report_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+I created two graphs to explore and to find out the best graph. The line
+graph still helps demonstrate a general positive trend between
+environmental quality and happiness scores; however, I think the scatter
+plot graph is better.
+
+\hypertarget{rq3-how-does-a-countrys-literacy-rate-associate-with-its-happiness-score}{%
+\subsection{RQ3: How does a country's literacy rate associate with its
+happiness
+score?}\label{rq3-how-does-a-countrys-literacy-rate-associate-with-its-happiness-score}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean the country names in literacy\_rate\_table\_cleaned}
+\NormalTok{literacy\_rate\_table\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ literacy\_rate\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                    
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                    }
+
+\CommentTok{\# Clean the country names in happiest\_countries\_cleaned}
+\NormalTok{happiest\_countries\_cleaned }\OtherTok{\textless{}{-}}\NormalTok{ happiest\_countries\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[\^{}[:alnum:] ]"}\NormalTok{, }\StringTok{""}\NormalTok{, country)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{trimws}\NormalTok{(country)) }\SpecialCharTok{\%\textgreater{}\%}                   
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{country =} \FunctionTok{tolower}\NormalTok{(country))                    }
+
+\CommentTok{\# Merge Literacy Rate and HappinessScore data}
+\NormalTok{merged\_data\_lit }\OtherTok{\textless{}{-}}\NormalTok{ literacy\_rate\_table\_cleaned }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(happiest\_countries\_cleaned, }\AttributeTok{by =} \StringTok{"country"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(merged\_data\_lit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 195 x 4
+##    country             total  year HappinessScore
+##    <chr>               <dbl> <dbl>          <dbl>
+##  1 afghanistan          37.3  2021           1.72
+##  2 albania              98.1  2018           5.3 
+##  3 algeria              81.4  2018           5.36
+##  4 andorra             100    2016          NA   
+##  5 angola               71.1  2015          NA   
+##  6 antigua and barbuda  99    2015          NA   
+##  7 argentina            99    2018           6.19
+##  8 armenia              99.8  2020           5.46
+##  9 australia            99      NA           7.06
+## 10 austria              98      NA           6.91
+## # i 185 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove missing values}
+\NormalTok{cleaned\_merged\_data\_lit }\OtherTok{\textless{}{-}}\NormalTok{ merged\_data\_lit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(total), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(year), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(HappinessScore))}
+\FunctionTok{print}\NormalTok{(cleaned\_merged\_data\_lit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 116 x 4
+##    country                total  year HappinessScore
+##    <chr>                  <dbl> <dbl>          <dbl>
+##  1 afghanistan             37.3  2021           1.72
+##  2 albania                 98.1  2018           5.3 
+##  3 algeria                 81.4  2018           5.36
+##  4 argentina               99    2018           6.19
+##  5 armenia                 99.8  2020           5.46
+##  6 azerbaijan              99.8  2019           4.89
+##  7 bahrain                 97.5  2018           5.96
+##  8 benin                   42.4  2018           4.38
+##  9 bolivia                 92.5  2015           5.78
+## 10 bosnia and herzegovina  98.5  2015           5.88
+## # i 106 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# View summary statistics }
+\FunctionTok{summary}\NormalTok{(cleaned\_merged\_data\_lit[, }\FunctionTok{c}\NormalTok{(}\StringTok{"total"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      total       
+##  Min.   : 22.30  
+##  1st Qu.: 78.72  
+##  Median : 93.80  
+##  Mean   : 85.00  
+##  3rd Qu.: 98.40  
+##  Max.   :100.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate percentiles for the "total" column in the literacy rate table}
+\NormalTok{percentiles }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(literacy\_rate\_table\_cleaned}\SpecialCharTok{$}\NormalTok{total, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(percentiles)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     25%     50%     75%    100% 
+##  80.725  95.650  99.000 100.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add bins to the data using the specified quartiles}
+\NormalTok{cleaned\_merged\_data\_lit }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_merged\_data\_lit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{literacy\_bin =} \FunctionTok{cut}\NormalTok{(}
+\NormalTok{      total,}
+      \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{80.725}\NormalTok{, }\FloatTok{95.650}\NormalTok{, }\FloatTok{99.000}\NormalTok{, }\DecValTok{100}\NormalTok{), }
+      \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Q1: \textless{}80.725"}\NormalTok{, }
+                 \StringTok{"Q2: 80.725{-}95.650"}\NormalTok{, }
+                 \StringTok{"Q3: 95.650{-}99.000"}\NormalTok{, }
+                 \StringTok{"Q4: \textgreater{}99.000"}\NormalTok{),}
+      \AttributeTok{include.lowest =} \ConstantTok{TRUE}
+\NormalTok{    )}
+\NormalTok{  )}
+\CommentTok{\# Create the box plot}
+\FunctionTok{ggplot}\NormalTok{(cleaned\_merged\_data\_lit, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ literacy\_bin, }\AttributeTok{y =}\NormalTok{ HappinessScore)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{outlier.color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{outlier.size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Literacy Rate and Happiness Score"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Literacy Rate (Quartiles)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Happiness Score"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Report_files/figure-latex/unnamed-chunk-12-1.pdf}
+\# 5. Data Interpretation \{\#data-interpretation\}
+
+\hypertarget{data-analysis}{%
+\subsection{Data Analysis}\label{data-analysis}}
+
+In addressing the main question, ``How do economic, environmental, and
+educational variables influence national happiness levels as reported by
+the World Population Review?'', this analysis provides evidence of
+significant associations between these factors and happiness scores.
+
+\emph{H1: I hypothesize that higher GDP per capita, measured in USD
+based on IMF estimates, is associated with higher national happiness
+levels.}
+
+The scatter plot examining GDP per capita and happiness scores reveals a
+clear positive trend. Countries with higher GDP per capita tend to
+report higher happiness scores. This supports the hypothesis that
+wealthier countries have more resources to invest in public services
+such as healthcare, education, and infrastructure, which improve the
+overall quality of life.
+
+\emph{H2: I hypothesize that better environmental quality, as measured
+by the Environmental Performance Index (EPI), is associated with higher
+happiness.}
+
+The line graph analyzing the association between environmental quality
+and happiness scores suggests a positive but variable association.
+Countries with higher environmental index scores generally report higher
+happiness levels, supporting the hypothesis that a clean and sustainable
+environment promotes well-being. However, the noisy pattern in the graph
+indicates that some countries with similar environmental scores differ
+significantly in happiness. The scatter plot graph shows a positive
+trend as well.
+
+\emph{H3: I hypothesize that higher literacy rates, as a measure of
+education, are associated with higher happiness scores.}
+
+The box plot demonstrates a generally positive association between
+literacy rates and happiness scores across the first three quartiles (Q1
+to Q3). However, Q3 (95.650--99.000) appears to have a slightly higher
+happiness scores compared to Q4 (\textgreater{} 99.000), despite Q4
+representing the countries with the highest literacy rates. This pattern
+could reflect diminishing returns of literacy on happiness or challenges
+unique to highly literate societies, such as increased societal
+pressures, disparities in resource allocation, or inequality.
+
+\hypertarget{limitations-and-future-directions}{%
+\subsection{Limitations and Future
+Directions}\label{limitations-and-future-directions}}
+
+One limitation of this study lies in the quality and consistency of the
+data used. Data sources may vary in their methods of collection,
+measurements, and reporting standards across countries. Future research
+should prioritize using standardized global datasets to minimize
+inconsistencies and align data collection periods across variables to
+ensure accuracy. Conducting longitudinal studies could further enhance
+the understanding of how changes in variables influence happiness over
+time, providing a more comprehensive and precise perspective on these
+relationships.
+
+As an extension of this study, we could perform statistical correlation
+tests, such as Pearson or Spearman correlation, to quantitatively assess
+the strength and direction of relationships between each variable and
+national happiness scores. This approach would allow us to identify
+which factor is most strongly correlated with happiness and could
+potentially be a primary determinant. Additionally, conducting
+regression analysis could help control for confounding variables and
+provide deeper insights into the relative importance of each factor in
+explaining variations in happiness.
+
+\hypertarget{implications}{%
+\subsection{Implications}\label{implications}}
+
+The positive link between GDP per capita and happiness emphasizes the
+importance of investments in public services like healthcare, education,
+and infrastructure, with a focus on reducing income inequality to
+maximize benefits. Similarly, the association between environmental
+quality and happiness underscores the need for sustainable policies that
+prioritize pollution reduction and green initiatives. The relationship
+between literacy rates and happiness suggests that education policies
+should focus not only on improving literacy but also on ensuring
+equitable access and opportunities, as the trend indicates that higher
+literacy rates do not always directly translate to higher happiness
+scores. Overall, these findings demonstrate the need for balanced
+strategies addressing economic, educational, and environmental factors
+to achieve sustainable well-being globally.
+
+\end{document}

@@ -1,4 +1,11 @@
+<<<<<<< HEAD:Mini Project 1/assessment.md
 # Assessment
+=======
+# Research Project Assessment
+
+**This assessment is for the final research project only.** Use the `assessment.md` file for all mini-projects.
+
+>>>>>>> 7af711670becf28cb907320d9d6b4c84770257f6:research-assessment.md
 
 ## Instructions
 
